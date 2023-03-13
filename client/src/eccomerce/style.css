@@ -1,0 +1,100 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav-link {
+    font-size: 20px !important;
+    margin-left: 40px !important;
+    color: grey;
+    font-weight: bold;
+    display: inline !important;
+}
+
+.navbar {
+    position: fixed !important;
+    z-index: 1;
+    
+}
+
+section {
+    display: inline !important;
+}
+
+.noBackground {
+    background-color: transparent !important;
+    border: none;
+    padding: 0px !important;
+}
+
+.font {
+    font-size: 40px !important;
+}
+
+.nav-tabs, .nav-pills{
+    justify-content: center !important;
+}
+
+h1 {
+    text-align: center;
+}
+
+#exampleFormControlInput1 {
+    height: 50px !important;
+}
+
+.icon {
+    font-size: 30px;
+    color: gray;
+    margin-left: 40px;
+}
+
+.top {
+    margin-top: -15px;
+}
+
+.icon-blue:hover {
+    color: skyblue;
+}
+
+.icon-red:hover {
+    color: #eb4b4b;
+}
+
+.btn-sm {
+    margin: 20px 570px;
+}
+
+.border {
+    padding: 40px;
+    background-color: #d4d9d9;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+.position-right {
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.bg-body-tertiary {
+    background-color: transparent !important;
+}
+
+.font-weight {
+    font-weight: 400;
+}
+
+.no-border {
+    border: none;
+    background-color: transparent !important;
+    padding: 0px !important;
+}
