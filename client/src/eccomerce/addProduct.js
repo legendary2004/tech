@@ -43,10 +43,6 @@ export default function() {
         .then(res => setProductStatus(res.data.message))
     }
 
-    React.useEffect(function() {
-        console.log(location)
-    }, [location])
-
     return (
         <div>
             <section className="navbar">
