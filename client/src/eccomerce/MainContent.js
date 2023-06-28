@@ -30,7 +30,7 @@ export default function() {
     }
 
     React.useEffect(function() {
-        let totalPrice = 0;
+        let totalPrice = 1;
             for (let j = 0; j < cart.length; j++) {
                 
                 totalPrice += Number(cart[j].price);
