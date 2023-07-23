@@ -14,7 +14,7 @@ import { FaYoutube } from "react-icons/fa";
 import React from "react";
 import "./style.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 
 
@@ -25,14 +25,14 @@ export default function() {
     let [cart, setCart] = React.useReducer(addToCart, []);
     let [price, setPrice] = React.useState(0);
     let [displayCart, setDisplayCart] = React.useState([]);
-    let [order, setOrder] = React.useState()
     
     function saveInfo(path) {
         navigate(path, location.state && {state: {name: location.state.name, isAdmin: location.state.isAdmin, isLoggedIn: location.state.isLoggedIn}})
     }
 
     React.useEffect(function() {
-        let totalPrice = 0;
+        let totalPrice = 0
+        ;
             for (let j = 0; j < cart.length; j++) {
                 
                 totalPrice += Number(cart[j].price);
