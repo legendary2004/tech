@@ -4,6 +4,7 @@ import Login from "./eccomerce/login";
 import Signup from "./eccomerce/signup";
 import AddProduct from "./eccomerce/addProduct";
 import EditProducts from "./eccomerce/editProducts";
+import Orders from "./eccomerce/orders";
 import "./eccomerce/style.css";
 
 export default function() {
@@ -14,6 +15,7 @@ export default function() {
             <Route path='/signup' element={<Signup />} />
             <Route path="/addproduct" element={<AddProduct />} />
             <Route path="/editProducts" element={<EditProducts />} />
+            <Route path="/orders" element={<Orders />}/>
         </Routes>
     )
 }

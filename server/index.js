@@ -182,4 +182,19 @@ app.post("/chooseProduct", (req, res) => {
     })
 })
 
+app.post("/orders", (req, res) => {
+    const name = req.body.name
+    const price = req.body.price
+
+    db.query("SELECT * FROM orders", (error, results) => {
+        res.send({
+            orders: results
+        })
+        if (name && price) {
+            db.query("INSERT INTO orders SET ?", {name: name, price: price})
+        }
+    })
+    
+})
+
 app.listen(port, () => console.log(`Server running on port: http://localhost:${port}`));

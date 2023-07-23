@@ -7,7 +7,7 @@ export default function(prop) {
 
   React.useEffect(function() {
     axios.post("http://localhost:5000/editProducts")
-    .then(res => setComputing(res.data.products.map(function(item, index) {
+    .then(res => setComputing(res.data.products.map(function(item) {
       if (item.category === 'Computing') {
         return (
           <div className="col" key={item.id}>
@@ -16,7 +16,8 @@ export default function(prop) {
               <div className="card-body">
                 <h3 className="card-title">{item.name} ({item.price}$)</h3>
                 <p className="card-text">{item.details}</p>
-                <button type="button" className="btn btn-primary" onClick={() => prop.click({do: "add", id: item.id, name: item.name, price: item.price})} data-bs-toggle="modal" data-bs-target="#exampleModal">Add to cart</button>
+                <button type="button" className="btn btn-primary" onClick={() => prop.click({do: "add", id: item.id, name: item.name, price: item.price
+              })} data-bs-toggle="modal" data-bs-target="#exampleModal">Add to cart</button>
               </div>
             </div>
           </div>

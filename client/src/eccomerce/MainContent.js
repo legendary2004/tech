@@ -14,6 +14,7 @@ import { FaYoutube } from "react-icons/fa";
 import React from "react";
 import "./style.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios, { Axios } from "axios";
 
 
 
@@ -24,13 +25,14 @@ export default function() {
     let [cart, setCart] = React.useReducer(addToCart, []);
     let [price, setPrice] = React.useState(0);
     let [displayCart, setDisplayCart] = React.useState([]);
+    let [order, setOrder] = React.useState()
     
     function saveInfo(path) {
         navigate(path, location.state && {state: {name: location.state.name, isAdmin: location.state.isAdmin, isLoggedIn: location.state.isLoggedIn}})
     }
 
     React.useEffect(function() {
-        let totalPrice = 1;
+        let totalPrice = 0;
             for (let j = 0; j < cart.length; j++) {
                 
                 totalPrice += Number(cart[j].price);
@@ -50,14 +52,9 @@ export default function() {
         }))
     }, [cart])
 
-    React.useEffect(function() {
-        console.log(location)
-    }, [location])
-
     function addToCart(value, action) {
         let index = value.findIndex(value => value.id == action.id)
         const name = value.filter(e => e.name === action.name)
-        console.log(index)
         if (action.do == 'add' && location.state) {
             if (name.length > 0) {
                 
@@ -82,6 +79,13 @@ export default function() {
         return [...value]
     
         
+    }
+
+    function insertOrder() {
+        axios.post("http://localhost:5000/orders", {
+            name: location.state.name,
+            price: price,
+        })
     }
 
     return (
@@ -113,6 +117,7 @@ export default function() {
                                 <>
                                     <Nav text="Add a product" link="/addproduct"/>
                                     <Nav text="Edit a product" link="/editProducts"/>
+                                    <Nav text="Orders" link="/orders" />
                                 </>
                             }
                         </>
@@ -122,7 +127,7 @@ export default function() {
             </section>
             <section className="position-right">
             <ul className="nav justify-content-end">
-                    <Offvanvas count={count} cart={displayCart} price={price}/>
+                    <Offvanvas count={count} cart={displayCart} price={price} click={insertOrder}/>
                 </ul>
             </section>
             <div className="container" id="phones">

@@ -2,7 +2,7 @@ import "./style.css"
 import Nav from "./Nav"
 import React from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 
 function editProduct(state, action) {
     let value = {};

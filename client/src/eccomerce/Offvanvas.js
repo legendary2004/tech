@@ -21,7 +21,7 @@ export default function(prop) {
                     {prop.cart.length == 0 && <h6>No items added in your cart</h6>}
                     {prop.cart.length != 0 && prop.cart}
                     <h6>Total price: {prop.price}$</h6>
-                    <button type="button" className="btn btn-secondary">Buy</button>
+                    <button type="button" className="btn btn-secondary" onClick={prop.click}>Buy</button>
                 </div>
             </div>
         </div>
