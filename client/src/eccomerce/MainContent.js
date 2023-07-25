@@ -82,9 +82,14 @@ export default function() {
     }
 
     function insertOrder() {
+        let boughtProducts = []
+        for (let i = 0; i < cart.length; i++) {
+            boughtProducts.push({name: cart[i].name, quantity: cart[i].quantity})
+        }
         axios.post("http://localhost:5000/orders", {
             name: location.state.name,
             price: price,
+            products: boughtProducts
         })
     }
 

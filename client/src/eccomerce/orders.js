@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { json, useLocation, useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import axios from "axios";
 
@@ -12,16 +12,27 @@ export default function() {
         axios.post("http://localhost:5000/orders")
         .then(res => {
             setOrders(res.data.orders.map(function(order) {
+                let array;
+                if (order.products) {
+                    array = JSON.parse(order.products)
+                    console.log(typeof array)
+                }
                 return (
                     <tr key={order.id}>
                         <td>{order.id}</td>
                         <td>{order.name}</td>
+                        <td>{array && array.map(item => {
+                            return (
+                                `${item.name}: ${item.quantity} `
+                            )
+                        })}</td>
                         <td>{order.price}</td>
                     </tr>
                 )
             }))
+            console.log(res.data.orders)
         })
-    }, [orders])
+    }, [])
 
     function saveInfo(path) {
         navigate(path, {state: {name: 'admin', isAdmin: true, isLoggedIn: true}})
@@ -40,6 +51,7 @@ export default function() {
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Client name</th>
+                    <th scope="col">Products</th>
                     <th scope="col">Total Price</th>
                 </tr>
             </thead>
